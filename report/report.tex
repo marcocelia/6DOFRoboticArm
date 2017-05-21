@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{caption}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3.2cm,right=3.2cm]{geometry}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage {amsmath, amssymb} 
+\usepackage{enumitem}
+\usepackage{gensymb}
+%\setenumerate[1]{label=\thesubsection.\arabic*}
+\usepackage{listings}
+\lstset{language=Matlab,%
+%	basicstyle=\fontsize{8}{13}\selectfont\ttfamily,
+	basicstyle=\scriptsize,
+	stepnumber=2,
+	frame=trBL
+}
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{3.5ex plus 1ex minus .2ex}{1.3ex plus .2ex}
+\titlespacing*{\subsection}
+{8pt}{1.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\begin{document}
+
+\newpage
+\clearpage
+\thispagestyle{empty}
+
+
+\begin{center} 
+	
+	\begin{figure}[h]
+		\center
+		\includegraphics[scale=0.4]{img/sannalogo.png}
+	\end{figure}
+	
+	\vspace{50pt}
+	
+	
+	
+	\textbf{\Large Robotic and Human Machine Interfaces}\\
+	\vspace{5pt}
+	\textbf{  {Project Report}}
+	\vspace{50pt}
+	
+	\textbf{Master degree of:}\\
+	\vspace{10pt}
+	\textbf{{\Large Embedded Computing Systems}}\\
+	\vspace{10pt}
+	\textbf{Academic year 2015/2016}\\
+	\vspace{50pt}
+	
+	
+	\vspace{60pt}
+	\textbf{Submitted by:}\\
+	Marco Celia
+	
+	
+	\vspace{100pt}
+	
+	
+	PERCRO lab. Scuola Superiore Sant'Anna, \today.
+	
+	
+	
+\end{center}
+\newpage
+\clearpage
+\thispagestyle{empty}
+
+
+\newpage
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+%\listoftables
+\clearpage
+\include{cap/intro}
+\include{cap/fkine}
+\include{cap/taskdes}
+\include{cap/singularity}
+\include{cap/ikine}
+\include{cap/rpe}
+
+\end{document}

@@ -1,0 +1,14 @@
+\section{Introduction}
+\label{cha:intro}
+
+In this project the implementation of a robotic arm manipulator task with the Matlab \textit{Robotics Toolbox} is presented. In particular, an Anthropomorphic arm, from now on Aarm, has been used. It has 6 Degree Of Freedom, from now on DOF, then could be considered, at least in the first discussion, as a non redundant manipulator since 6 are also the maximum DOF in a 3D environment. The task that the Aarm has to perform is a laser cutting task, in particular it is conceived with an laser beam emitter placed at the End-Effector, then the robotic holds a predefined pose from which repetitively computes a trajectory in order to cut polygonal objects following in an horizontal plane.
+
+From the above description of the task to be computed it is possible to evince that the Aarm can be considered redundant with respect to such specific task, to prove this it is sufficient to note that it is useless to impose a specific orientation for the approach direction of the End-Effector. 
+
+In the first phase of this work will be analysed the Kinematic structure of the Aarm and computed feasible trajectory in the \textbf{Operational Space}, from points of such trajectory the respective joint angles are computed with three different type of kinematic inversion:
+\begin{itemize}
+	\item \textbf{Inverse Kinematic:} performed exploiting the geometric properties of the Aarm links.
+	\item \textbf{Inverse Differential Kinematic:} performed exploiting Jacobian's theory and numeric integration
+	\item \textbf{Optimized Inv.Diff.Kinematic:} same as previous one but trying to optimize a further objective exploiting arm redundancy with respect to the assigned task
+\end{itemize}
+At the end of each procedure all results are evaluated and then compared each other by means of graphical representations.

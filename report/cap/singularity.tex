@@ -1,0 +1,55 @@
+\section{Singularity Analysis}
+
+Kinematics singularity are special configurations of the manipulator such that Jacobian matrix is \textit{rank deficient}. Regarding the anthropomorphic arm an effective way to determine such points could be decoupling those singularities which are proper of the spherical wrist (last three joints) from those regarding the shoulder (first three joints). A specular techniques will be adopted also in sec.\ref{ssec:lik} to determine the inverse kinematics.
+
+In order to understand the procedure let's analyse the Jacobian matrix structure, since it has 6 rotational joints
+\begin{center}
+\footnotesize
+$J(q)=\left[\begin{matrix}z_0(p_e-p_0)&z_1(p_e-p_1) & z_2(p_e-p_2) & z_3(p_e-p_W) & z43(p_e-p_W) & z_5(p_e-p_W) \\
+z_0 & z_1 & z_2 & z_3 & z_4 & z_5 &
+\end{matrix} \right]$
+\end{center}
+
+It could be partitioned into four blocks regarding position and orientation of first and last three joints respectively
+
+\begin{center}
+	$J(q) = \left[\begin{matrix}
+	J_{11}(q) & J_{12}(q) \\
+	J_{21}(q) & J_{22}(q) 
+	\end{matrix}\right]$
+\end{center}
+
+If we consider the end-effector frame originated in the center of spherical wrist, i.e $p_e = p_W$, blocks $J_{12} = 0_3$ and hence the Jacobian can be rewritten as
+ 
+\begin{center}
+	$J(q) = \left[\begin{matrix}
+	J_{11}(q) & 0_3 \\
+	J_{21}(q) & J_{22}(q) 
+	\end{matrix}\right]$
+\end{center}
+which, from linear algebra theory, is a lower-triangular matrix for which is possible to compute determinant as
+\begin{center}
+$det(J(q)) = det(J_{11})det(J_{22})$
+\end{center}
+Hence it is possible to compute singularity zeroing blocks regarding shoulder separately from those regarding wrist. It is important to notice that imposing $p_e = p_W$ does not influence the positions of such points, which are intrinsic of the manipulator's mechanical structure, but rather is an algebraic intuition to make simpler their computation.
+
+\subsection{Shoulder Singularities}
+From block $J(q)_{11}$ is possible to recognize that a singularity condition occurs in two manipulator's configuration, first when
+\begin{center}
+$q_3 = \dfrac{\pi}{2}$ or $q_3 = \dfrac{3\pi}{2}$
+\end{center} 
+That represents the so called \textit{elbow singularity}, were joint 3 is outstretched or retracted. The second situation happens when the wrist center lies in the rotation axis of joint 1, i.e $z_0$, meaning that 
+\begin{center}
+$p_{Wx} = p_{Wy} = 0$	
+\end{center}
+That represents the so called \textit{shoulder singularity}, in this case any rotation about $z_0$ does not produce any motion to end-effector.
+
+\subsection{Wrist Singularities}
+
+From block $J(q)_{22}$ is possible to recognize that a singularity condition occurs when three vectors $z_3, z_4$ and $z_5$ are linearly dependent, hence whenever 
+\begin{center}
+$q_5 = 0$ or $q_5 = \pi$
+\end{center}
+Indeed in this situation an opposite rotation on $q_4$ and $q_6$ does not produce any end-effector rotation.
+
+From the trajectory proposed in \ref{sec:taskedes} could be simply noted that shoulder singularity could not happen since starting $x$ and $y$ positions are greater than zero and manipulator never comes back. Wrist singularity it's also avoided since end-effector during the task has a fixed orientation which not allow the alignment of link 1 with link 2. Finally elbow singularity has been avoided experimentally verifying that in the farthermost point of the trajectory elbow won't be outstretched.
